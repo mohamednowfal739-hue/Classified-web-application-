@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101828">
+  <title>ReMarket — Buy Better. Sell Smarter.</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-visual">
+      <div class="brand brand-light"><span class="brand-mark">R</span> reMarket</div>
+      <div class="auth-copy">
+        <span class="eyebrow">THE SMARTER WAY TO SHOP</span>
+        <h1>Good things<br><em>deserve</em> a second life.</h1>
+        <p>Discover pre-loved finds, make extra cash, and keep great products in circulation.</p>
+        <div class="auth-perks">
+          <span>✓ Great prices</span><span>✓ Local sellers</span><span>✓ Less waste</span>
+        </div>
+      </div>
+      <div class="auth-photo-credit">A marketplace for things worth keeping.</div>
+    </div>
+    <div class="auth-panel">
+      <form id="loginForm" class="login-card">
+        <div class="brand brand-dark"><span class="brand-mark">R</span> reMarket</div>
+        <span class="eyebrow">WELCOME BACK</span>
+        <h2>Sign in to your account</h2>
+        <p class="muted">Buy something lovely or list something useful.</p>
+        <label for="loginName">Your name</label>
+        <input id="loginName" autocomplete="name" placeholder="e.g. Mohamed" required maxlength="50">
+        <label for="loginEmail">Email address</label>
+        <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" type="password" autocomplete="current-password" placeholder="Enter any password for demo" required minlength="4">
+        <button class="btn btn-primary btn-wide" type="submit">Sign in <span>→</span></button>
+        <button class="btn btn-outline btn-wide" type="button" id="guestBtn">Continue as guest</button>
+        <p class="fine-print">Demo sign-in only. No account or password is sent to a server.</p>
+        <p id="loginMessage" class="form-message" role="status"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="app" class="app hidden">
+    <header class="topbar">
+      <a href="#home" class="brand brand-dark"><span class="brand-mark">R</span> reMarket</a>
+      <div class="top-search">
+        <span aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search phones, furniture, books..." aria-label="Search products">
+        <kbd>⌘ K</kbd>
+      </div>
+      <div class="top-actions">
+        <button class="icon-btn" id="favoritesToggle" aria-label="Show favourites" title="Favourites">♡ <span class="hide-small">Saved</span></button>
+        <button class="btn btn-primary sell-top" id="sellTopBtn">＋ Sell an item</button>
+        <button class="user-chip" id="userMenu" title="Sign out"><span class="avatar" id="avatar">M</span><span id="userName">Member</span><span class="chevron">⌄</span></button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">A BETTER KIND OF MARKETPLACE</span>
+          <h1>Find your next<br><em>favourite thing.</em></h1>
+          <p>Quality pre-loved products from people near you. Better finds, better prices, less waste.</p>
+          <div class="hero-actions"><button class="btn btn-primary" id="browseBtn">Explore listings <span>↘</span></button><button class="text-btn" id="heroSellBtn">Have something to sell? <b>List it free →</b></button></div>
+          <div class="hero-stats"><div><strong>1,200+</strong><span>happy exchanges*</span></div><div><strong>Up to 70%</strong><span>less than retail*</span></div><div><strong>Local first</strong><span>community powered</span></div></div>
+          <p class="fine-print">*Illustrative marketplace stats for this demo.</p>
+        </div>
+        <div class="hero-art">
+          <img src="https://images.unsplash.com/photo-1490312278390-ab64016e0aa9?auto=format&fit=crop&w=1100&q=85" alt="Thoughtfully arranged pre-loved home accessories" onerror="this.style.display='none'">
+          <div class="floating-tag"><span class="tag-dot"></span><div><strong>Good finds, found nearby</strong><small>Shop sustainably, every day</small></div></div>
+          <div class="hero-stamp">SECOND<br>CHANCES<br><span>✳</span></div>
+        </div>
+      </section>
+
+      <section class="category-section" aria-label="Browse categories">
+        <div class="section-heading"><div><span class="eyebrow">BROWSE YOUR WAY</span><h2>What are you looking for?</h2></div><button class="text-btn" id="allCategoriesBtn">View all listings →</button></div>
+        <div class="category-rail" id="categoryRail">
+          <button class="category-pill active" data-category="All"><span>✳</span> Everything</button>
+          <button class="category-pill" data-category="Electronics"><span>⌁</span> Electronics</button>
+          <button class="category-pill" data-category="Furniture"><span>▱</span> Home & furniture</button>
+          <button class="category-pill" data-category="Fashion"><span>◇</span> Fashion</button>
+          <button class="category-pill" data-category="Vehicles"><span>↗</span> Bikes & vehicles</button>
+          <button class="category-pill" data-category="Books"><span>▤</span> Books</button>
+          <button class="category-pill" data-category="Sports"><span>◎</span> Sports</button>
+        </div>
+      </section>
+
+      <section class="listing-section" id="listingSection">
+        <div class="section-heading listing-heading"><div><span class="eyebrow">HANDPICKED FOR YOU</span><h2 id="listingTitle">Fresh finds</h2><p class="muted" id="resultSummary">Browse quality pre-loved products.</p></div>
+          <div class="listing-tools"><label class="sr-only" for="sortSelect">Sort products</label><select id="sortSelect"><option value="recommended">Recommended</option><option value="newest">Recently added</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></div>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
+        <div id="emptyState" class="empty-state hidden"><div>⌕</div><h3>No items found</h3><p>Try a different search or category.</p><button class="btn btn-outline" id="clearFiltersBtn">Clear filters</button></div>
+      </section>
+
+      <section class="sell-banner">
+        <div class="sell-banner-icon">↗</div><div><span class="eyebrow">MAKE SPACE. MAKE SOME MONEY.</span><h2>Your unused could be someone else's <em>favourite.</em></h2><p>List your item in minutes. It’s free to post in this demo.</p></div><button class="btn btn-light" id="bannerSellBtn">Start selling <span>→</span></button>
+      </section>
+    </main>
+
+    <footer class="footer"><a href="#home" class="brand brand-light"><span class="brand-mark">R</span> reMarket</a><p>Buy better. Sell smarter. Keep good things moving.</p><p class="fine-print">Created by Mohamed Nowfal · Student project demonstration</p><span class="footer-note">© 2026 reMarket</span></footer>
+  </div>
+
+  <div class="modal-backdrop hidden" id="sellModal" role="dialog" aria-modal="true" aria-labelledby="sellModalTitle">
+    <div class="modal">
+      <button class="modal-close" data-close="sellModal" aria-label="Close">×</button>
+      <span class="eyebrow">GIVE IT A SECOND LIFE</span><h2 id="sellModalTitle">List an item</h2><p class="muted">Add clear details so buyers know what makes it special.</p>
+      <form id="sellForm" class="modal-form">
+        <div class="form-row"><div><label for="itemName">Product name *</label><input id="itemName" maxlength="70" placeholder="e.g. Wireless headphones" required></div><div><label for="itemPrice">Price (₹) *</label><input id="itemPrice" type="number" min="1" max="10000000" placeholder="1500" required></div></div>
+        <div class="form-row"><div><label for="itemCategory">Category *</label><select id="itemCategory" required><option value="">Choose category</option><option>Electronics</option><option>Furniture</option><option>Fashion</option><option>Vehicles</option><option>Books</option><option>Sports</option><option>Home</option></select></div><div><label for="itemCondition">Condition *</label><select id="itemCondition" required><option value="">Choose condition</option><option>Like New</option><option>Very Good</option><option>Good</option><option>Fair</option></select></div></div>
+        <label for="itemLocation">Location *</label><input id="itemLocation" maxlength="70" placeholder="e.g. Chennai, Tamil Nadu" required>
+        <label for="itemImage">Product image URL (optional)</label><input id="itemImage" type="url" placeholder="https://...">
+        <label for="itemDescription">Description *</label><textarea id="itemDescription" maxlength="400" rows="3" placeholder="Condition, age, features, reason for selling..." required></textarea>
+        <label for="itemPhone">Contact phone *</label><input id="itemPhone" type="tel" inputmode="numeric" pattern="[6-9][0-9]{9}" placeholder="10-digit Indian mobile number" required>
+        <button class="btn btn-primary btn-wide" type="submit">Publish listing <span>→</span></button>
+        <p class="fine-print">Demo only: listings are saved in this browser, not published to a public server.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal detail-modal"><button class="modal-close" data-close="detailModal" aria-label="Close">×</button><div id="detailContent"></div></div>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
