@@ -4,7 +4,7 @@ A responsive front-end marketplace project built with HTML, CSS and JavaScript.
 
 ## Files
 - `index.html` — login screen, marketplace layout, listing and detail modals
-- `style.css` — professional responsive design (navy, emerald and lime palette)
+- `style.css` — premium responsive Midnight Purple design (near-black surfaces, violet accents and lavender highlights)
 - `script.js` — sample listings, search, category filtering, sorting, favourites, product posting and WhatsApp contact
 
 ## Run
